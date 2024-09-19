@@ -28,8 +28,8 @@ compare_files() {
 # If the file is related to dev env then we are not interested.
 # Will look to filter these out in the yaml file of the GitHub action.
 if [[ $1 == *"staging/"* ]] ; then
-    compare_files "$1" "${!$1/staging/"$devEnv"}"
+    compare_files "$1" "${!$1/staging/"!$devEnv"}"
 else
-    compare_files "$1" "${!$1/prod/"$stagingEnv"}" "${!$1/prod/"$devEnv"}"
+    compare_files "$1" "${!$1/prod/"!$stagingEnv"}" "${!$1/prod/"!$devEnv"}"
 fi
     
