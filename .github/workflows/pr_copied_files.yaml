@@ -20,7 +20,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: my-branch
+          ref: check_pr_copies
       - name: Get changed files in specific repo folders
         id: changed-files-specific
         uses: tj-actions/changed-files@v45
