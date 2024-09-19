@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Script to check if the changed files to promote are a direct copy of earlier environment
-devEnv = "dev"
-stagingEnv = "staging"
+devEnv="dev"
+stagingEnv="staging"
 
 compare_files() [
     file1 = $1
