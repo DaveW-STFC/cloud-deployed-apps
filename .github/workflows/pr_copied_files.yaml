@@ -41,7 +41,7 @@ jobs:
           echo "One or more files in the folder has changed."
           echo "Files that have changed: $ALL_CHANGED_FILES" 
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
-            if [[ ${PWD}/scripts/PR_Check_Copy.sh $file == 'false' ]]; then
+            if [[ $(${PWD}/scripts/pr_check_copy.sh $file) == 'false' ]]; then
               echo "result=false" >> "$GITHUB_OUTPUT"
               break;
             else
