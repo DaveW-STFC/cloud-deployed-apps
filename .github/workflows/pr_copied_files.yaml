@@ -29,10 +29,10 @@ jobs:
           files: |
             charts/staging/**
             charts/prod/**
-            clusters/staging/**
-            clusters/prod/**
-            secrets/staging/**
-            secrets/prod**
+          #  clusters/staging/**
+          #  clusters/prod/**
+          #  secrets/staging/**
+          #  secrets/prod**
 
       - name: Run step if any file(s) in the folder change
         id: step1
