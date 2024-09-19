@@ -51,6 +51,7 @@ jobs:
 
   comment_pr:
     needs: changed_files
+    if: changed-files.outputs.any_changed == 'true'
     runs-on: ubuntu-latest
     steps:
       - env:
