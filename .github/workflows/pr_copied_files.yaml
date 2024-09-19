@@ -22,7 +22,7 @@ jobs:
         with:
           ref: check_pr_copies
       - name: Get changed files in specific repo folders
-        id: changed-files-specific
+        id: changed-files
         uses: tj-actions/changed-files@v45
         with:
           files: |
@@ -35,13 +35,13 @@ jobs:
 
       - name: Run step if any file(s) in the folder change
         id: step1
-        if: steps.changed-files-specific.outputs.any_changed == 'true'
+        if: steps.changed-files.outputs.any_changed == 'true'
         env:
-          ALL_CHANGED_FILES: ${{ steps.changed-files-specific.outputs.all_changed_files }}
+          ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
         run: |
           echo "One or more files in the folder has changed."
           echo "Files that have changed: $ALL_CHANGED_FILES" 
-          for file in ${{ steps.changed-files-specific.outputs.all_changed_files }}; do
+          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
             if [[ ./PR_Check_Copy.sh $file == 'false' ]]; then
               echo "result=false" >> "$GITHUB_OUTPUT"
               break;
