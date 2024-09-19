@@ -1,6 +1,9 @@
 name: CI Copied Files Check
 
 on:
+  push:
+    branches:
+      - check_pr_copies
   pull_request:
     branches:
       - main
