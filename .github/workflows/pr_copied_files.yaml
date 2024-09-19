@@ -19,7 +19,9 @@ jobs:
       check_result: ${{ steps.step1.outputs.result }}
     steps:
       - uses: actions/checkout@v4
-      - name: Get changed files in specific repo folder
+        with:
+          ref: my-branch
+      - name: Get changed files in specific repo folders
         id: changed-files-specific
         uses: tj-actions/changed-files@v45
         with:
