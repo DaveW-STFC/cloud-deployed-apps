@@ -26,12 +26,12 @@ jobs:
         uses: tj-actions/changed-files@v45
         with:
           files: |
-            - charts/staging/**
-            - charts/prod/**
-            - clusters/staging/**
-            - clusters/prod/**
-            - secrets/staging/**
-            - secrets/prod**
+            charts/staging/**
+            charts/prod/**
+            clusters/staging/**
+            clusters/prod/**
+            secrets/staging/**
+            secrets/prod**
 
       - name: Run step if any file(s) in the folder change
         if: steps.changed-files.outputs.any_changed == 'true'
