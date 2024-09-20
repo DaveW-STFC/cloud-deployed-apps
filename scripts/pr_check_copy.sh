@@ -27,10 +27,10 @@ compare_files() {
 
 # If the file is related to dev env then we are not interested.
 # Will look to filter these out in the yaml file of the GitHub action.
-if [[ $1 == *"staging/"* ]] ; then
-    path=$1
+path=$1
+if [[ $1 == *"staging"* ]] ; then
     compare_files "$1" "${path/staging/"$devEnv"}"
 else
-    compare_files "$1" "${path/prod/"!$stagingEnv"}" "${path/prod/"$devEnv"}"
+    compare_files "$1" "${path/prod/"$stagingEnv"}" "${path/prod/"$devEnv"}"
 fi
     
