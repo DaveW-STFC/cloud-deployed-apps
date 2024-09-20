@@ -17,7 +17,7 @@ jobs:
     name: Test changed-files
     outputs:
       check_result: ${{ steps.step1.outputs.result }}
-      any_changed: ${{steps.changed-files.outputs.any_changed}}
+      any_changed: ${{ steps.changed-files.outputs.any_changed }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -56,11 +56,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - env:
-          resultjob1: ${{needs.changed_files.outputs.check_result}}
+          CHECK_RESULT: ${{ needs.changed_files.outputs.check_result }}
         uses: actions/github-script@v7
         with:
           script: |
-            if ($resultjob1 != false) {
+            if ($CHECK_RESULT != 'false') {
               github.rest.issues.createComment({
                 issue_number: context.issue.number,
                 owner: context.repo.owner,
