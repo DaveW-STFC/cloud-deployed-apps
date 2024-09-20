@@ -44,7 +44,7 @@ jobs:
           echo "Files that have changed: $ALL_CHANGED_FILES"
           echo "result=true" >> "$GITHUB_OUTPUT"
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
-            if [[ $(${PWD}/scripts/pr_check_copy.sh $file) == 'false' ]]; then
+            if [[ $(${PWD}/scripts/pr_check_copy.sh $file) == '1' ]]; then
               echo "result=false" >> "$GITHUB_OUTPUT"
               break;
             fi
