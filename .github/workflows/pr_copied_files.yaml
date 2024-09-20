@@ -60,11 +60,11 @@ jobs:
         uses: actions/github-script@v7
         with:
           script: |
-            if (${CHECK_RESULT} != 'false') {
+            if [[ ${CHECK_RESULT} != 'false' ]]; then
               github.rest.issues.createComment({
                 issue_number: context.issue.number,
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 body: '👋 All files are an exact match to previous environment(s)'
               })
-            }
+            fi
