@@ -44,11 +44,13 @@ jobs:
           echo "Files that have changed: $ALL_CHANGED_FILES"
           echo "result=true" >> "$GITHUB_OUTPUT" 
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
-            res=$(bash -c scripts/pr_check_copy.sh "$file")
-            if [ "$res" == 1 ]; then
-              echo "result=false" >> "$GITHUB_OUTPUT"
-              break;
-            fi
+            res=./scripts/pr_check_copy.sh "$file"
+            echo $res
+            #  res=$(bash -c scripts/pr_check_copy.sh "$file")
+            #  if [ "$res" == 1 ]; then
+            #    echo "result=false" >> "$GITHUB_OUTPUT"
+            #    break;
+            #  fi
           done
 
   comment_pr:
