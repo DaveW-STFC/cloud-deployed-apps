@@ -46,11 +46,10 @@ jobs:
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
             res=$( sudo ./scripts/pr_check_copies.sh "$file" )
             echo $res
-            #  res=$(bash -c scripts/pr_check_copy.sh "$file")
-            #  if [ "$res" == 1 ]; then
-            #    echo "result=false" >> "$GITHUB_OUTPUT"
-            #    break;
-            #  fi
+            if [ $res == 1 ]; then
+              echo "result=false" >> "$GITHUB_OUTPUT"
+              break;
+            fi
           done
 
   comment_pr:
