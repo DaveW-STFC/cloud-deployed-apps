@@ -29,6 +29,7 @@ compare_files() {
 # Will look to filter these out in the yaml file of the GitHub action.
 echo "Running comparison"
 path=$1
+echo "$path"
 if [[ $1 == *"staging"* ]] ; then
     compare_files "$1" "${path/staging/"$devEnv"}"
 else
