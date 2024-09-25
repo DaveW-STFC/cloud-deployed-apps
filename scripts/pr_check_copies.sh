@@ -14,8 +14,10 @@ compare_files() {
     if [ "$#" -eq 2 ]; then
         echo "Comparing $file1 and $file2"
         if cmp -s "$file1" "$file2" ; then
+            echo "Files match returning 0"
             return 0
         else
+            echo "Files do not match, returning 1"
             return 1
         fi
     else
