@@ -45,7 +45,7 @@ jobs:
           echo "result=true" >> "$GITHUB_OUTPUT"
           chmod +x ./scripts/pr_check_copies.sh
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
-            res=./scripts/pr_check_copies.sh "$file"
+            res=sudo ./scripts/pr_check_copies.sh "$file"
             echo $res
             #  res=$(bash -c scripts/pr_check_copy.sh "$file")
             #  if [ "$res" == 1 ]; then
