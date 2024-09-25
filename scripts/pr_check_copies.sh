@@ -15,16 +15,18 @@ compare_files() {
         echo "Comparing $file1 and $file2"
         if cmp -s "$file1" "$file2" ; then
             echo "Files match returning 0"
-            return 0
+            exit 0
         else
             echo "Files do not match, returning 1"
-            return 1
+            exit 1
         fi
     else
         if cmp -s "$file1" "$file2" && cmp -s "$file1" "$file3"; then
-            return 0
+            echo "All files match, returning 0"
+            exit 0
         else
-            return 1
+            echo "Files do not match, returning 1"
+            exit 1
         fi
     fi
 }
