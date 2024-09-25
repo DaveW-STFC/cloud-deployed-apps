@@ -10,7 +10,9 @@ compare_files() {
     file2=$2
     file3=$3
 
+    echo "$#"
     if [ "$#" -eq 2 ]; then
+        echo "Comparing $file1 and $file2"
         if cmp -s "$file1" "$file2" ; then
             return 0
         else
