@@ -10,23 +10,17 @@ compare_files() {
     file2=$2
     file3=$3
 
-    echo "$#"
     if [ "$#" -eq 2 ]; then
-        echo "Comparing $file1 and $file2"
         if cmp -s "$file1" "$file2" ; then
-            echo "Files match returning 0"
-            exit 0
+            echo $((0))
         else
-            echo "Files do not match, returning 1"
-            exit 1
+            echo $((1))
         fi
     else
         if cmp -s "$file1" "$file2" && cmp -s "$file1" "$file3"; then
-            echo "All files match, returning 0"
-            exit 0
+            echo $((0))
         else
-            echo "Files do not match, returning 1"
-            exit 1
+            echo $((1))
         fi
     fi
 }
