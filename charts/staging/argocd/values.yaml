@@ -20,7 +20,7 @@ argo-cd:
       tls: true
 
     certificate:
-      # -- Deploy a Certificate resource (requires cert-manager) ---
+      # -- Deploy a Certificate resource (requires cert-manager)
       enabled: true
       issuer:
         kind: "ClusterIssuer"
