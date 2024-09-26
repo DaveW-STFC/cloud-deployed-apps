@@ -51,7 +51,6 @@ jobs:
               break;
             fi
           done
-          echo $check_result
 
   comment_pr:
     needs: changed_files
