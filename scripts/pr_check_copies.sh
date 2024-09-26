@@ -5,11 +5,14 @@
 devEnv="dev"
 stagingEnv="staging"
 
+
+# Function to compare the files, file1 is our original file passed to the script followed by two possible further files
 compare_files() {
     file1=$1
     file2=$2
     file3=$3
 
+    # Check the number of arguments passed to the function for comparison
     if [ "$#" -eq 2 ]; then
         if cmp -s "$file1" "$file2" ; then
             echo $((0))
@@ -25,9 +28,9 @@ compare_files() {
     fi
 }
 
-# If the file is related to dev env then we are not interested.
-# Will look to filter these out in the yaml file of the GitHub action.
-
+# Check the file path to determine if it's from staging or prod folder
+# If it's staging we pass it along with a url to the file in dev folder.
+# If it's from prod we pass both the staging and dev file also for comparison
 path=$1
 if [[ $1 == *"staging"* ]] ; then
     compare_files "$1" "${path/staging/"$devEnv"}"
