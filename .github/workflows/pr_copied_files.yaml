@@ -43,14 +43,12 @@ jobs:
           echo "One or more files in the folder has changed."
           echo "Files that have changed: $ALL_CHANGED_FILES"
           echo "result=true" >> "$GITHUB_OUTPUT"
-          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
-            res=$( sudo ./scripts/pr_check_copies.sh "$file" )
-            echo $res
-            if [ "$res" -eq 1 ]; then
-              echo "result=false" >> "$GITHUB_OUTPUT"
-              break;
-            fi
-          done
+          res=$( sudo ./scripts/pr_check_copies.sh "$ALL_CHANGED_FILES" )
+          echo $res
+          if [ "$res" -eq 1 ]; then
+            echo "result=false" >> "$GITHUB_OUTPUT"
+            break;
+          fi
 
   comment_pr:
     needs: changed_files
