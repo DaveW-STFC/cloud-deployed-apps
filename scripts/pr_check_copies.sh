@@ -31,12 +31,9 @@ compare_files() {
 # Check the file path to determine if it's from staging or prod folder
 # If it's staging we pass it along with a url to the file in dev folder.
 # If it's from prod we pass both the staging and dev file also for comparison
-#path=$1
-for file in $1; do
-    path=$file
-    if [[ $file == *"staging"* ]] ; then
-        compare_files "$file" "${path/staging/"$devEnv"}"
-    else
-        compare_files "$file" "${path/prod/"$stagingEnv"}" "${path/prod/"$devEnv"}"
-    fi
-done    
+path=$1
+if [[ $file == *"staging"* ]] ; then
+    compare_files "$file" "${path/staging/"$devEnv"}"
+else
+    compare_files "$file" "${path/prod/"$stagingEnv"}" "${path/prod/"$devEnv"}"
+fi
