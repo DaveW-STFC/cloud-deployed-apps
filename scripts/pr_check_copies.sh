@@ -32,8 +32,8 @@ compare_files() {
 # If it's staging we pass it along with a url to the file in dev folder.
 # If it's from prod we pass both the staging and dev file also for comparison
 path=$1
-if [[ $file == *"staging"* ]] ; then
-    compare_files "$file" "${path/staging/"$devEnv"}"
+if [[ $1 == *"staging"* ]] ; then
+    compare_files "$1" "${path/staging/"$devEnv"}"
 else
-    compare_files "$file" "${path/prod/"$stagingEnv"}" "${path/prod/"$devEnv"}"
+    compare_files "$1" "${path/prod/"$stagingEnv"}" "${path/prod/"$devEnv"}"
 fi
