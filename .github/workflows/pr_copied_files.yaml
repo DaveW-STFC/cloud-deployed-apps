@@ -47,7 +47,6 @@ jobs:
           echo $res
           if [ "$res" -eq 1 ]; then
             echo "result=false" >> "$GITHUB_OUTPUT"
-            break;
           fi
 
   comment_pr:
