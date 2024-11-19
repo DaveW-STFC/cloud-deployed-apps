@@ -1,14 +1,4 @@
 openstack-cluster:
-  controlPlane:
-    machineCount: 3
-
-  nodeGroups:
-    - name: default-md-0
-      machineCount: 2
-
-  nodeGroupDefaults:
-    machineFlavor: l3.nano
-
   addons:
     ingress:
       enabled: true
@@ -23,10 +13,11 @@ openstack-cluster:
       kubePrometheusStack:
         release:
           values:
-            defaultRules:
-              additionalRuleLabels:
-                cluster: staging-management
             prometheus:
+              prometheusSpec:
+                externalLabels:
+                  cluster: management
+                  env: staging
               ingress:
                 hosts:
                   - prometheus-mgmt.staging.nubes.stfc.ac.uk

@@ -1,6 +1,4 @@
 openstack-cluster:
-  kubernetesVersion: "1.28.12"
-  machineImage: "capi-ubuntu-2004-kube-v1.28.12-2024-08-22"
 
   controlPlane:
     machineCount: 3
@@ -29,10 +27,11 @@ openstack-cluster:
       kubePrometheusStack:
         release:
           values:
-            defaultRules:
-              additionalRuleLabels:
-                cluster: dev-worker
             prometheus:
+              prometheusSpec:
+                externalLabels:
+                  cluster: worker
+                  env: dev
               ingress:
                 hosts:
                   - prometheus-worker.dev.nubes.stfc.ac.uk
